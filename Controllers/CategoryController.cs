@@ -12,5 +12,19 @@ namespace BulkyWebMVC.Controllers
          List<Catagory> categoryList = _dbContext.Catagories.ToList();
          return View(categoryList);
       }
+      public IActionResult Create()
+      {
+         return View();
+      }
+      [HttpPost]
+      public IActionResult Create(Catagory catagory)
+      {
+         if (ModelState.IsValid)
+         {
+            _dbContext.Add(catagory);
+            _dbContext.SaveChanges();
+         }
+         return RedirectToAction("Index");
+      }
    }
 }
