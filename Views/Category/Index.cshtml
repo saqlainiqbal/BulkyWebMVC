@@ -1,0 +1,26 @@
+﻿
+<h1>Categories List</h1>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Category Name</th>
+        <th>Category Display Order</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var category in Model)
+    {
+        <tr>
+            <td>@category.Name</td>
+            <td>@category.DisplayOrder</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@category.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@category.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@category.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    <tr>
+        <td colspan="4">
+            <a asp-action="Create">Create New Category</a>
+        </td>
+    </tr>
+</table>
